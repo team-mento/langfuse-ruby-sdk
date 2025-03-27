@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+require 'langfuse'
+
+# You can add fixtures and/or initialization code here to make experimenting
+# with your gem easier. You can also use a different console, if you like.
+
+# Configure Langfuse
+Langfuse.configure do |config|
+  config.public_key = ENV['LANGFUSE_PUBLIC_KEY'] || 'test_public_key'
+  config.secret_key = ENV['LANGFUSE_SECRET_KEY'] || 'test_secret_key'
+  config.debug = true
+end
+
+# (If you use this, don't forget to add pry to your Gemfile!)
+# require "pry"
+# Pry.start
+
+require 'irb'
+IRB.start(__FILE__)
