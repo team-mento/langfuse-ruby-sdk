@@ -244,7 +244,7 @@ class Langfuse
     attr_accessor :host, :public_key, :secret_key, :batch_size, :flush_interval
     
     def initialize
-      @host = ENV.fetch('LANGFUSE_HOST', 'https://cloud.langfuse.com')
+      @host = ENV.fetch('LANGFUSE_HOST', 'https://us.cloud.langfuse.com')
       @public_key = ENV['LANGFUSE_PUBLIC_KEY']
       @secret_key = ENV['LANGFUSE_SECRET_KEY']
       @batch_size = ENV.fetch('LANGFUSE_BATCH_SIZE', 10).to_i

@@ -6,7 +6,7 @@ Langfuse.configure do |config|
   config.secret_key = ENV['LANGFUSE_SECRET_KEY']
 
   # Optional configuration
-  config.host = ENV.fetch('LANGFUSE_HOST', 'https://cloud.langfuse.com')
+  config.host = ENV.fetch('LANGFUSE_HOST', 'https://us.cloud.langfuse.com')
   config.batch_size = ENV.fetch('LANGFUSE_BATCH_SIZE', '20').to_i
   config.flush_interval = ENV.fetch('LANGFUSE_FLUSH_INTERVAL', '30').to_i # seconds
   config.debug = Rails.env.development? || ENV['LANGFUSE_DEBUG'] == 'true'

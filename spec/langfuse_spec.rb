@@ -1,11 +1,13 @@
 require 'spec_helper'
 
 RSpec.describe Langfuse do
+  let(:dummy_class) { Class.new { include LangfuseHelper } }
+  let(:helper) { dummy_class.new }
+
   before do
     Langfuse.configure do |config|
-      config.public_key = 'test-public-key'
-      config.secret_key = 'test-secret-key'
-      config.debug = false
+      config.debug = true
+      config.batch_size = 10
     end
 
     # Reset the events queue
@@ -15,10 +17,13 @@ RSpec.describe Langfuse do
 
   describe '.trace' do
     it 'creates a trace' do
-      trace = Langfuse.trace(name: 'test-trace')
+      # trace = Langfuse.trace(name: 'fungi-test-trace-2')
+      expect(Langfuse).to receive(:flush)
+
+      trace = Langfuse.trace(name: 'fungi-test-trace')
 
       expect(trace).to be_a(Langfuse::Models::Trace)
-      expect(trace.name).to eq('test-trace')
+      expect(trace.name).to eq('fungi-test-trace')
       expect(trace.id).not_to be_nil
 
       events = Langfuse::Client.instance.instance_variable_get(:@events)

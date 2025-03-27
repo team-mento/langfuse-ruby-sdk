@@ -56,7 +56,7 @@ l := langfuse.New(context.Background())
 ```
 
 This reads configuration from environment variables:
-- `LANGFUSE_HOST`: Langfuse API endpoint (defaults to "https://cloud.langfuse.com")
+- `LANGFUSE_HOST`: Langfuse API endpoint (defaults to "https://us.cloud.langfuse.com")
 - `LANGFUSE_PUBLIC_KEY`: Public API key
 - `LANGFUSE_SECRET_KEY`: Secret API key
 
@@ -64,7 +64,7 @@ This reads configuration from environment variables:
 
 ```go
 l := langfuse.NewFromConfig(api.Config{
-    Host:      "https://cloud.langfuse.com",
+    Host:      "https://us.cloud.langfuse.com",
     PublicKey: "your-public-key",
     SecretKey: "your-secret-key",
 }, context.Background())
@@ -420,7 +420,7 @@ Here's a sketch of what the API might look like in Ruby:
 ```ruby
 # Initialize client
 langfuse = Langfuse.new(
-  host: "https://cloud.langfuse.com",
+  host: "https://us.cloud.langfuse.com",
   public_key: "your-public-key",
   secret_key: "your-secret-key"
 )

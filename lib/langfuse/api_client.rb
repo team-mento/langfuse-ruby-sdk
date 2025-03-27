@@ -1,6 +1,7 @@
 require 'net/http'
 require 'uri'
 require 'json'
+require 'base64'
 
 module Langfuse
   class ApiClient
@@ -16,7 +17,14 @@ module Langfuse
       # Build the request
       request = Net::HTTP::Post.new(uri.path)
       request.content_type = 'application/json'
-      request.basic_auth(@config.public_key, @config.secret_key)
+
+      # Set authorization header using base64 encoded credentials
+      auth = Base64.strict_encode64("#{@config.public_key}:#{@config.secret_key}")
+      # Log the encoded auth header for debugging
+      if @config.debug
+        log("Using auth header: Basic #{auth} (public_key: #{@config.public_key}, secret_key: #{@config.secret_key})")
+      end
+      request['Authorization'] = "Basic #{auth}"
 
       # Set the payload
       request.body = {
@@ -28,7 +36,13 @@ module Langfuse
       http.use_ssl = uri.scheme == 'https'
       http.read_timeout = 10 # 10 seconds
 
-      log("Sending #{events.size} events to Langfuse API") if @config.debug
+      if @config.debug
+        log("Sending #{events.size} events to Langfuse API at #{@config.host}")
+        log("Events: #{events.inspect}")
+        # log("Using auth header: Basic #{auth.gsub(/.(?=.{4})/, '*')}") # Mask most of the auth token
+        log("Using auth header: Basic #{auth}") # Mask most of the auth token
+        log("Request url: #{uri}")
+      end
 
       response = http.request(request)
 
@@ -40,9 +54,15 @@ module Langfuse
         JSON.parse(response.body)
       else
         error_msg = "API error: #{response.code} #{response.message}"
+        if @config.debug
+          log("Response body: #{response.body}", :error)
+          log("Request URL: #{uri}", :error)
+        end
         log(error_msg, :error)
         raise error_msg
       end
+
+      log('---')
     rescue StandardError => e
       log("Error during API request: #{e.message}", :error)
       raise

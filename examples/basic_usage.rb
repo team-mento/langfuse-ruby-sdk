@@ -4,7 +4,7 @@ require 'langfuse'
 Langfuse.configure do |config|
   config.public_key = ENV['LANGFUSE_PUBLIC_KEY']  # e.g., 'pk-lf-...'
   config.secret_key = ENV['LANGFUSE_SECRET_KEY']  # e.g., 'sk-lf-...'
-  config.host = ENV.fetch('LANGFUSE_HOST', 'https://cloud.langfuse.com')
+  config.host = ENV.fetch('LANGFUSE_HOST', 'https://us.cloud.langfuse.com')
   config.debug = true # Enable debug logging
 end
 

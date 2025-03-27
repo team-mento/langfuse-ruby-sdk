@@ -1,0 +1,128 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://us.cloud.langfuse.com/api/public/ingestion
+    body:
+      encoding: UTF-8
+      string: '{"batch":[{"id":"ef2b2d57-1139-46f0-a4f5-50ba5196b461","type":"trace-create","timestamp":"2025-03-27T18:30:30.818Z","body":{"id":"a5ad4805-a4a7-445c-9518-18cbe0699947","name":"test-trace","timestamp":"2025-03-27T18:30:30.818Z"}}]}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+      Authorization:
+      - Basic cGstbGYtNGNjYWQ2ZTQtOTdkOS00ZDU1LWFkNmUtZDFkMWU1ZjNkNmEwOnNrLWxmLWNkMjYyMTYyLTZlYzktNDU2Zi04ODExLWU0OTU3ZWQ4ZTg1Nw==
+  response:
+    status:
+      code: 207
+      message: Multi-Status
+    headers:
+      Date:
+      - Thu, 27 Mar 2025 18:30:31 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '86'
+      Connection:
+      - keep-alive
+      X-Robots-Tag:
+      - noindex
+      X-Content-Type-Options:
+      - nosniff
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Permissions-Policy:
+      - autoplay=*, fullscreen=*, microphone=*
+      X-Frame-Options:
+      - SAMEORIGIN
+      Vary:
+      - Origin, Accept-Encoding
+      Etag:
+      - '"ely163vju72e"'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=YuvKGK4v%2Flv6kUG727KHCQy%2BtRLc7%2FtBUtGeB0uNQOAOSuyB6yUZ%2BA8ZYB9jSeUnp1txOx6QP1zI07Sk2ggSCN0SbGPT2kCt6VsYEMyDxeoyq9jcBLdJDHlb7DrAr2r9w0f4ODsm8BvLWLxDo3Q4fCiU7A%3D%3D"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Strict-Transport-Security:
+      - max-age=0; includeSubDomains
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9270f59bfd610802-IAD
+      Server-Timing:
+      - cfL4;desc="?proto=TCP&rtt=44066&min_rtt=30068&rtt_var=33306&sent=5&recv=8&lost=0&retrans=1&sent_bytes=3518&recv_bytes=1220&delivery_rate=27303&cwnd=249&unsent_bytes=0&cid=365575e2f207e6c8&ts=289&x=0"
+    body:
+      encoding: UTF-8
+      string: '{"successes":[{"id":"ef2b2d57-1139-46f0-a4f5-50ba5196b461","status":201}],"errors":[]}'
+  recorded_at: Thu, 27 Mar 2025 18:30:31 GMT
+- request:
+    method: post
+    uri: https://us.cloud.langfuse.com/api/public/ingestion
+    body:
+      encoding: UTF-8
+      string: '{"batch":[{"id":"3d61c3c7-b771-4497-acbd-5e32b19e258d","type":"trace-create","timestamp":"2025-03-27T18:30:31.233Z","body":{"id":"a5ad4805-a4a7-445c-9518-18cbe0699947","output":"test
+        result","timestamp":"2025-03-27T18:30:31.233Z"}}]}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+      Authorization:
+      - Basic cGstbGYtNGNjYWQ2ZTQtOTdkOS00ZDU1LWFkNmUtZDFkMWU1ZjNkNmEwOnNrLWxmLWNkMjYyMTYyLTZlYzktNDU2Zi04ODExLWU0OTU3ZWQ4ZTg1Nw==
+  response:
+    status:
+      code: 207
+      message: Multi-Status
+    headers:
+      Date:
+      - Thu, 27 Mar 2025 18:30:31 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '86'
+      Connection:
+      - keep-alive
+      X-Robots-Tag:
+      - noindex
+      X-Content-Type-Options:
+      - nosniff
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Permissions-Policy:
+      - autoplay=*, fullscreen=*, microphone=*
+      X-Frame-Options:
+      - SAMEORIGIN
+      Vary:
+      - Origin, Accept-Encoding
+      Etag:
+      - '"13a0nyvxe2n2e"'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=kM4g664XL8F56pui5SwHwTWrK2NQ4WOJkUPCNugRsjJUpp9lUDfGIHxJp7%2FS3hhf86eAxALYwvAIzqzz%2BUE7JSE4hYd9j1xNXEXIKTYRfa3m9dzxCC1oDoRatZc82vqmDzjevSrYytvyjIOYBJmO2LcbEQ%3D%3D"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Strict-Transport-Security:
+      - max-age=0; includeSubDomains
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9270f59dab868238-IAD
+      Server-Timing:
+      - cfL4;desc="?proto=TCP&rtt=26283&min_rtt=24183&rtt_var=8665&sent=4&recv=8&lost=0&retrans=0&sent_bytes=2435&recv_bytes=1223&delivery_rate=90436&cwnd=251&unsent_bytes=0&cid=ae186856da475932&ts=277&x=0"
+    body:
+      encoding: UTF-8
+      string: '{"successes":[{"id":"3d61c3c7-b771-4497-acbd-5e32b19e258d","status":201}],"errors":[]}'
+  recorded_at: Thu, 27 Mar 2025 18:30:31 GMT
+recorded_with: VCR 6.3.1
