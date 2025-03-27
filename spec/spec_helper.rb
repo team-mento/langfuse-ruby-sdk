@@ -51,6 +51,13 @@ RSpec.configure do |config|
 
   # Reset Langfuse configuration before each test
   config.before(:each) do
+    # Allow spying on Langfuse module methods
+    allow(Langfuse).to receive(:trace).and_call_original
+    allow(Langfuse).to receive(:update_generation).and_call_original
+    allow(Langfuse).to receive(:update_span).and_call_original
+    allow(Langfuse).to receive(:score).and_call_original
+    allow(Langfuse).to receive(:flush).and_call_original
+
     # Debug log the environment variables
     # TEST_LOGGER.debug 'Environment Variables:'
     # TEST_LOGGER.debug "LANGFUSE_PUBLIC_KEY=#{ENV['LANGFUSE_PUBLIC_KEY'].inspect}"

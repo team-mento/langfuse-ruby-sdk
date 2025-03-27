@@ -28,7 +28,7 @@ module LangfuseHelper
       **attributes
     )
 
-    Time.now
+    start_time = Time.now
     result = nil
     error = nil
 
@@ -43,6 +43,7 @@ module LangfuseHelper
     ensure
       # Always update the generation with results
       generation.end_time = Time.now.utc
+      generation.start_time = start_time.utc
 
       # Add output if there was a result and it wasn't already set
       generation.output = result if result && !generation.output
@@ -83,7 +84,7 @@ module LangfuseHelper
     ensure
       # Update trace output if available
       if result && !trace.output
-        trace.output = result.is_a?(String) ? result : { result: result.to_s }
+        trace.output = result.is_a?(String) ? result : result
 
         # Create a new trace event to update the trace
         Langfuse.trace(
