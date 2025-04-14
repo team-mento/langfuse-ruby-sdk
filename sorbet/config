@@ -1,0 +1,6 @@
+--dir
+.
+--ignore=/tmp/
+--ignore=/vendor/bundle
+--ignore=.history
+--ignore=sorbet/rbi/gems/debase@0.2.9.rbi

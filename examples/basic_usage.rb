@@ -1,3 +1,4 @@
+# typed: false
 require 'langfuse'
 
 # Configure the client

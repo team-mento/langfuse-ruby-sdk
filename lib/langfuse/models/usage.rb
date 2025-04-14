@@ -1,3 +1,4 @@
+# typed: true
 module Langfuse
   module Models
     class Usage

@@ -18,6 +18,7 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = '>= 2.7.0'
 
   spec.add_dependency 'concurrent-ruby', '~> 1.2'
+  spec.add_dependency 'sorbet-runtime', '~> 0.5'
 
   spec.add_development_dependency 'bundler', '~> 2.0'
   spec.add_development_dependency 'faker', '~> 3.2'
@@ -28,6 +29,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop-rspec', '~> 2.20'
   spec.add_development_dependency 'sidekiq', '~> 6.5'
   spec.add_development_dependency 'simplecov', '~> 0.22'
+  spec.add_development_dependency 'sorbet', '~> 0.5'
+  spec.add_development_dependency 'tapioca', '~> 0.11'
   spec.add_development_dependency 'timecop', '~> 0.9'
   spec.add_development_dependency 'vcr', '~> 6.1'
   spec.add_development_dependency 'webmock', '~> 3.18'
