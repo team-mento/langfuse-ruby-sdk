@@ -11,8 +11,7 @@ module Langfuse
       @events = Concurrent::Array.new # Thread-safe array
       @mutex = Mutex.new # For operations that need additional thread safety
 
-      # Start periodic flusher only in server context
-      schedule_periodic_flush if defined?(Rails) && Rails.server?
+      schedule_periodic_flush
 
       # Register shutdown hook
       return if @config.disable_at_exit_hook
