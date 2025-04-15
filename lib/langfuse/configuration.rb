@@ -19,7 +19,7 @@ module Langfuse
     sig { returns(T::Boolean) }
     attr_accessor :debug, :disable_at_exit_hook
 
-    sig { returns(Logger) }
+    sig { returns(T.untyped) }
     attr_accessor :logger
 
     sig { void }
