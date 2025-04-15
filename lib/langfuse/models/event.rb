@@ -1,3 +1,4 @@
+# typed: true
 require 'securerandom'
 
 module Langfuse

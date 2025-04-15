@@ -1,16 +1,24 @@
+# typed: strict
+
 require 'net/http'
 require 'uri'
 require 'json'
 require 'base64'
+require 'sorbet-runtime'
 
 module Langfuse
   class ApiClient
+    extend T::Sig
+
+    sig { returns(T.untyped) }
     attr_reader :config
 
+    sig { params(config: T.untyped).void }
     def initialize(config)
       @config = config
     end
 
+    sig { params(events: T::Array[T::Hash[T.untyped, T.untyped]]).returns(T::Hash[String, T.untyped]) }
     def ingest(events)
       uri = URI.parse("#{@config.host}/api/public/ingestion")
 
@@ -44,14 +52,18 @@ module Langfuse
         log("Request url: #{uri}")
       end
 
+      log('---') # Moved log statement before response handling to avoid affecting return value
+
       response = http.request(request)
+
+      result = T.let(nil, T.nilable(T::Hash[String, T.untyped]))
 
       if response.code.to_i == 207 # Partial success
         log('Received 207 partial success response') if @config.debug
-        JSON.parse(response.body)
+        result = JSON.parse(response.body)
       elsif response.code.to_i >= 200 && response.code.to_i < 300
         log("Received successful response: #{response.code}") if @config.debug
-        JSON.parse(response.body)
+        result = JSON.parse(response.body)
       else
         error_msg = "API error: #{response.code} #{response.message}"
         if @config.debug
@@ -62,7 +74,7 @@ module Langfuse
         raise error_msg
       end
 
-      log('---')
+      result
     rescue StandardError => e
       log("Error during API request: #{e.message}", :error)
       raise
@@ -70,11 +82,11 @@ module Langfuse
 
     private
 
+    sig { params(message: String, level: Symbol).returns(T.untyped) }
     def log(message, level = :debug)
       return unless @config.debug
 
-      logger = defined?(Rails) ? Rails.logger : Logger.new($stdout)
-      logger.send(level, "[Langfuse] #{message}")
+      T.unsafe(@config.logger).send(level, "[Langfuse] #{message}")
     end
   end
 end

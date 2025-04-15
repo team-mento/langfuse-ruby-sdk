@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# typed: false
 require 'bundler/setup'
 require 'langfuse'
 require_relative '../../lib/langfuse_helper'
