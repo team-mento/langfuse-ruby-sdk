@@ -6,10 +6,10 @@ Gem::Specification.new do |spec|
   spec.name          = 'langfuse'
   spec.version       = Langfuse::VERSION
   spec.authors       = ['Langfuse']
-  spec.email         = ['hello@langfuse.com']
+  spec.email         = ['manuel@mento.co']
 
   spec.summary       = 'Ruby SDK for the Langfuse observability platform'
-  spec.description   = "Langfuse is an open source observability platform for LLM applications. This is the Ruby client for Langfuse's API."
+  spec.description   = "Langfuse is an open source observability platform for LLM applications. This is the Ruby client for Langfuse's API. Rough first alpha"
   spec.homepage      = 'https://github.com/langfuse/langfuse-ruby'
   spec.license       = 'MIT'
 
